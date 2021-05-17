@@ -28,13 +28,11 @@ function Login(props) {
     <div>
       <div className={styles.container}>
         <h2 className={styles.signin}>Sign In</h2>
-        <div>
+        <div className={styles.inputs}>
+          <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} id="roomInput" type="text" className={styles.roomInput} />
           <input placeholder="Room Name" onChange={(e) => setRoom(e.target.value)} id="nameInput" type="text" className={styles.nameInput} />
         </div>
-        <div>
-          <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} id="roomInput" type="text" className={styles.roomInput} />
-        </div>
-        <button onClick={handleClick}>Click me</button>
+        <button className={styles.button} onClick={handleClick}>Click me</button>
       </div>
       <div>
         <Toast toastList={toastList} removeToast={removeToast} />

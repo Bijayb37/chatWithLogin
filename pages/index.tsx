@@ -11,13 +11,12 @@ function Login(props) {
   const [toastList, setToastList] = useState([])
   const router = useRouter()
 
-  const removeToast = (username) => {
-    setToastList(prev => prev.filter((t) => t.username !== username))
-  }
-
   const handleClick = () => {
     socket.emit("login", { username, room }, error => {
-      if (error) {
+
+      if (error) {  
+        let ranNumber = Math.floor(Math.random() * 101)
+        setToastList(prev => [...prev, { id: ranNumber, title: "Login Failed", message: error }])
         return console.log(error)
       }
       router.push('/chat')
@@ -35,7 +34,7 @@ function Login(props) {
         <button className={styles.button} onClick={handleClick}>Click me</button>
       </div>
       <div>
-        <Toast toastList={toastList} removeToast={removeToast} />
+        <Toast toastList={toastList} setToastList={setToastList} />
       </div>
     </div>
   )

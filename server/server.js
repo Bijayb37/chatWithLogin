@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
 
     socket.on("chat message", (msg) => {
         const user = getUser(socket.id)
-        io.emit("chat message", msg)
+        socket.in(user.room).emit("chat message", msg)
     })
 
     socket.on("disconnect", () => {

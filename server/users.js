@@ -3,8 +3,8 @@ const { Socket } = require("socket.io")
 let users = []
 
 const addUsers = (id, username, room) => {
-    const existingUser = users.find(user => user.username === username)
-    // if (existingUser) return { error: "you smell poo" }
+    const existingUser = users.find(user => user.username === username && user.room === room)
+    if (existingUser) return { error: "that username is already taken" }
     if (!room && !username) return { error: "please enter a username and a room"}
     if (!room) return { error: "please enter a room"}
     if (!username) return { error: "please enter an username"}
@@ -23,9 +23,6 @@ const getUsers = (room) => {
 }
 
 const deleteUser = (id) => {
-    //splice
-
-    //filter
     users = users.filter((user) => user.id !== id)
     return users
 }

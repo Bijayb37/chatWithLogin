@@ -5,6 +5,7 @@ import styles from '../styles/Chat.module.css'
 import { useRouter } from 'next/router'
 import Toast from '../Components/Toast'
 import useToggle from '../Components/useToggle'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 function Chat(props) {
     const { socket } = useContext(SocketContext)
@@ -23,12 +24,11 @@ function Chat(props) {
         })
         socket.emit("second login")
         socket.on("toast", (us, rm) => {
-            let meth = Math.floor(Math.random() * 101)
-            setToastList(prev => [...prev, { id: meth, title: `${us}`, message: `has enterted room ${rm}` }])
+            let ranNumber = Math.floor(Math.random() * 101)
+            setToastList(prev => [...prev, { id: ranNumber, title: `${us}`, message: `has enterted room ${rm}` }])
         })
 
         socket.on("chat message", (msg) => {
-            console.log("message sent")
             setMessages((prevMessages) => [...prevMessages, msg])
         })
 
@@ -38,19 +38,14 @@ function Chat(props) {
 
         socket.on("removal", (serverUsers, serverUser) => {
             setUsers(serverUsers)
-            let meth = Math.floor(Math.random() * 101)
-            setToastList(prev => [...prev, { id: meth, title: `${serverUser.username}`, message: "has left the room" }])
+            let ranNumber = Math.floor(Math.random() * 101)
+            setToastList(prev => [...prev, { id: ranNumber, title: `${serverUser.username}`, message: "has left the room" }])
         })
 
         return () => (
             socket.disconnect()
         )
     }, [])
-
-    useEffect(() => {
-
-    }, [])
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -61,14 +56,15 @@ function Chat(props) {
                 id: socket.id
             }
         )
+        setNewMessage("")
     }
 
     const handleChange = (e) => {
         setNewMessage(e.target.value)
     }
 
-    const mapped = messages.map((m, i) => (
-        <h1 key={i}>{m.body}</h1>
+    const mappedMessages = messages.map((m, i) => (
+        <p key={i}>{m.body}</p>
     ))
 
     const logout = () => {
@@ -82,14 +78,13 @@ function Chat(props) {
             <div className={styles.header}>
                 <button onClick={toggle} className={styles.dropdown}>Users Logged In</button>
                 <div className={styles.nameContainer}>
-                    <h1>{`Room ${room}` || 'room'}</h1>
+                    <h3>{`Room ${room}` || 'room'}</h3>
                     <p>{username || 'username'}</p>
                 </div>
                 <button onClick={logout} className={styles.button}>Log Out</button>
             </div>
             {toggler &&
                 <div>
-                    <h1>header</h1>
                     <ul>
                         {users.map((user, i) => <li key={i}>{user.username}</li>)}
                     </ul>
@@ -97,9 +92,11 @@ function Chat(props) {
             }
 
             <div className={styles.mainBody}>
-                <div className={styles.messages}>
-                    {mapped}
-                </div>
+                <ScrollToBottom className={styles.messages}>
+                    {/* <div className={styles.messages}> */}
+                    {mappedMessages}
+                    {/* </div> */}
+                </ScrollToBottom>
                 <div className={styles.messages2}>
                     <form className={styles.newMessageForm}>
                         <textarea onChange={handleChange} value={newMessage} className={styles.newMessageBox} placeholder="type new message here" />

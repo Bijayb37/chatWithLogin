@@ -1,19 +1,60 @@
 .chatContainer {
-    margin: 20% auto;
-    width: 60vw;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: center;    
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    margin: 10vh auto;
+    width: 80vw;
+    height: 80vh;
 }
 
 .header {
-    margin: 1em;
+    width: 100%;
+    padding: 1em;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 30%);
     justify-content: center;
+}
+
+.header button {
+    border-radius: 5px;
+    border: none;
+    font-size: 16px; 
+    cursor: pointer;
+    max-height: 40px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown button {
+    height: 100%;
+    width: 100%;
+}
+
+.list {
+    width: 100%;
+    list-style-type: none;
+    position: absolute;
+    z-index: 100;
+    background: white;
+    padding: 0;
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 6px; 
+    margin-top: 5px;
+    padding: 5px 0px;
+}
+
+.list li {
+    padding: 0px 0px 10px 0px;
+}
+
+.list li:hover {
+    background: #f2f5f6;
 }
 
 .nameContainer {
@@ -27,15 +68,15 @@
 } 
 
 .mainBody {
-    width: 60vw;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;    
 }
 
 .messages {
-    flex: 4; 
-    height: 40vh;
+    flex: 4;
     padding: 0px 20px;
     width: 100%;
     background: #f2f5f6;
@@ -70,23 +111,63 @@
 }
 
 .newMessageForm {
-    /* border-radius: 0 0 1em 1em; */
-    /* background: rgba(30, 228, 148, 0.7); */
     display: flex;
     height: 50px;
     flex-direction: row;
 }
 
-.dropdown {
-    border-radius: 5px;
-    border: none;
-    font-size: 16px; 
-    cursor: pointer;
+
+
+.listIcon {
+    font-size: 1.5em;
+    vertical-align: -2px;
 }
 
-.button {
-    border-radius: 5px;
-    border: none;
-    font-size: 16px; 
-    cursor: pointer;
+
+@media (max-width: 650px) {
+    .chatContainer {    
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+    }
+
+    .mainBody {
+        width: 100%;
+    }
+
+    .messages {
+        /* height:40vh; */
+        flex: 5;
+        padding: 0px 20px;
+        width: 100vw;
+        background: #f2f5f6;
+        word-break: break-all;
+    }
+
+    .messages2 {
+        max-height: 100px;
+        height: 60px;
+        width: 100%;
+        background: white;
+    }
+
+    .messageButton {
+        outline: none;
+        border-radius: 50px;
+        border: none;
+        font-size: 16px; 
+        cursor: pointer;
+    }
+    
+    .newMessageBox {
+        border: none;
+        outline: none;
+        padding: 0%;
+        width: 100%;
+        font-size: 16px;
+        resize: none;
+    }
+
+
 }

@@ -3,6 +3,7 @@ import { MainContext, UsersContext } from '../contexts'
 import { SocketContext } from '../contexts/SocketContext'
 import styles from '../styles/Chat.module.css'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Toast from '../Components/Toast'
 import useToggle from '../Components/useToggle'
 import ScrollToBottom from 'react-scroll-to-bottom'
@@ -75,27 +76,32 @@ function Chat(props) {
 
     return (
         <div className={styles.chatContainer}>
+            <Head>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+            </Head>
             <div className={styles.header}>
-                <button onClick={toggle} className={styles.dropdown}>Users Logged In</button>
+                <div className={styles.dropdown}>
+                    <button onClick={toggle}>
+                        Users &nbsp;
+                        <i className={`bi bi-list ${styles.listIcon}`}></i>
+                    </button>
+                    {toggler &&
+                        <ul className={styles.list}>
+                            {users.map((user, i) => {
+                                return <li key={i}>{user.username}</li>
+                            })}
+                        </ul>
+                    }
+                </div>
                 <div className={styles.nameContainer}>
                     <h3>{`Room ${room}` || 'room'}</h3>
                     <p>{username || 'username'}</p>
                 </div>
                 <button onClick={logout} className={styles.button}>Log Out</button>
             </div>
-            {toggler &&
-                <div>
-                    <ul>
-                        {users.map((user, i) => <li key={i}>{user.username}</li>)}
-                    </ul>
-                </div>
-            }
-
             <div className={styles.mainBody}>
                 <ScrollToBottom className={styles.messages}>
-                    {/* <div className={styles.messages}> */}
                     {mappedMessages}
-                    {/* </div> */}
                 </ScrollToBottom>
                 <div className={styles.messages2}>
                     <form className={styles.newMessageForm}>

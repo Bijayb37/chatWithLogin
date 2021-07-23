@@ -30,7 +30,7 @@ function Chat(props) {
         })
 
         socket.on("chat message", (msg) => {
-            setMessages((prevMessages) => [...prevMessages, msg])
+            setMessages((prevMessages) => [...prevMessages, {...msg, messageByCurrentUser: false}])
         })
 
         socket.on("users", (allUsers) => {
@@ -50,7 +50,7 @@ function Chat(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setMessages((prevMessages) => [...prevMessages, { body: newMessage, id: socket.id }])
+        setMessages((prevMessages) => [...prevMessages, { body: newMessage, id: socket.id, messageByCurrentUser: true }])
         socket.emit("chat message",
             {
                 body: newMessage,
@@ -65,7 +65,12 @@ function Chat(props) {
     }
 
     const mappedMessages = messages.map((m, i) => (
-        <p key={i}>{m.body}</p>
+        <p
+            key={i}
+            className={`${styles.messageItem} ${m.messageByCurrentUser ? styles.myMessage : styles.othersMessage}`}
+        >
+            {m.body}
+        </p>
     ))
 
     const logout = () => {
@@ -73,7 +78,7 @@ function Chat(props) {
         router.push('/')
         router.reload()
     }
-
+    console.log(messages)
     return (
         <div className={styles.chatContainer}>
             <Head>
@@ -93,9 +98,9 @@ function Chat(props) {
                         </ul>
                     }
                 </div>
-                <div className={styles.nameContainer}>
-                    <h3>{`Room ${room}` || 'room'}</h3>
-                    <p>{username || 'username'}</p>
+                <div onClick={() => logout()} className={styles.nameContainer}>
+                    <h3>{username || 'username'}</h3>
+                    <p>{`Room ${room}` || 'room'}</p>
                 </div>
                 <button onClick={logout} className={styles.button}>Log Out</button>
             </div>

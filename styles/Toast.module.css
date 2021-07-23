@@ -11,17 +11,14 @@
 
 
 .notification {
-	background: #6cb1f7;
 	transition: .3s ease;
 	position: relative;
 	pointer-events: auto;
 	overflow: hidden;
+	border-radius: 0.5em;
 	margin: 0 0 6px;
-    height: 60px;
-    padding: 10px 20px;   
 	margin-bottom: 15px;
-	width: 300px;
-	border-radius: 3px 3px 3px 3px;
+	/* width: 300px; */
 	box-shadow: 0 0 10px #999;
 	color: #000;
 	opacity: .9;
@@ -33,35 +30,40 @@
 	animation: toast-in-right .7s;
 }
 
-/* .notification:hover {
+.notification:hover {
 	box-shadow: 0 0 12px #fff;
 	opacity: 1;
 	cursor: pointer
-} */
+}
 
 .notificationTitle {
+	padding: 10px 20px 22px; 
 	font-weight: 700;
 	font-size: 16px;
 	text-align: left;
-	margin-top: 0;
-	margin-bottom: 6px;
-    width: 300px;
     height: 18px;
+	white-space: nowrap;
+}
+
+.notificationTitle  p{
+	margin: 0px;
 }
 
 
 
 .notificationMessage {
+	padding: 5px 20px 10px; 
 	margin: 0;
 	text-align: left;
-    height: 18px;
     margin-left: -1px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-
+.notificationMessage  p{
+	margin: 0px;
+}
 
 .notificationContainer button {
 	position: relative;

@@ -83,6 +83,27 @@
     word-break: break-all;
 }
 
+.messageItem {
+    list-style-type: none;
+    margin: 8px;
+    min-width: 200px;
+    padding: 12px 8px;
+    color: white;
+    width:fit-content;
+    border-radius: 30px;
+    padding-left: 1em;
+}
+
+.myMessage {
+    background: #03a2ec;
+    margin-left: auto;
+}
+
+.othersMessage {
+    margin-right: auto;
+    background: #f67172;
+}
+
 .messages2 {
     padding: 4px 20px;
     width: 100%;

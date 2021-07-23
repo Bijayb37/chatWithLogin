@@ -2,7 +2,7 @@ import { memo, useContext, useEffect, useState } from 'react'
 import { MainContext } from '../contexts'
 import { SocketContext } from '../contexts/SocketContext'
 import styles from '../styles/Home.module.css'
-import Toast from "../Components/Toast"
+import Toast from '../Components/Toast'
 import { useRouter } from 'next/router'
 
 function Login(props) {
@@ -13,13 +13,12 @@ function Login(props) {
 
   const handleClick = () => {
     socket.emit("login", { username, room }, error => {
-
       if (error) {  
         let ranNumber = Math.floor(Math.random() * 101)
-        setToastList(prev => [...prev, { id: ranNumber, title: "Login Failed", message: error }])
+        setToastList(prev => [...prev, { id: ranNumber, title: "Login Failed", message: error, color: "red" }])
         return console.log(error)
       }
-      router.push('/chat')
+      router.push('/chat', null, {shallow: true})
     })
   }
 
@@ -40,4 +39,4 @@ function Login(props) {
   )
 }
 
-export default memo(Login)
+export default Login

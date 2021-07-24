@@ -12,7 +12,7 @@ const io = require("socket.io")(http, {
         origin: "*"
     }
 })
-
+console.log("its here")
 io.on('connection', (socket) => {
 
     socket.on("login", ({username, room}, callback) => {

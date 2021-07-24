@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Toast from '../Components/Toast'
 import { useRouter } from 'next/router'
 import { SocketContext } from '../contexts/SocketContext'
-import { MainContext } from '../contexts/index' 
+import { MainContext } from '../contexts/index.js' 
 
 function Login(props) {
   const { socket } = useContext(SocketContext)

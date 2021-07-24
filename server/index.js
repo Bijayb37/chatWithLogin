@@ -2,6 +2,7 @@ const server = require("express")()
 const http = require("http").createServer(server)
 const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
+const PORT = process.env.PORT || 3000;
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const { addUsers, getUser, getUsers, deleteUser} = require('./users')
@@ -48,7 +49,7 @@ app.prepare().then(() => {
         return handle(req,res)
     })
 
-    http.listen(3000, err => {
+    http.listen(PORT, err => {
         if(err) throw err
         console.log(":> Now serving localhost:3000")
     })

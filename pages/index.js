@@ -2,8 +2,8 @@ import { memo, useContext, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Toast from '../Components/Toast'
 import { useRouter } from 'next/router'
-import { MainContext } from 'contexts/index' 
 import { SocketContext } from '../contexts/SocketContext'
+import { MainContext } from '../contexts/index' 
 
 function Login(props) {
   const { socket } = useContext(SocketContext)

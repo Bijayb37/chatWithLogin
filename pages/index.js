@@ -1,5 +1,4 @@
 import { memo, useContext, useEffect, useState } from 'react'
-// import { MainContext } from '../contexts/index'
 import { MainContext } from '../contexts' 
 import { SocketContext } from '../contexts/SocketContext'
 import styles from '../styles/Home.module.css'

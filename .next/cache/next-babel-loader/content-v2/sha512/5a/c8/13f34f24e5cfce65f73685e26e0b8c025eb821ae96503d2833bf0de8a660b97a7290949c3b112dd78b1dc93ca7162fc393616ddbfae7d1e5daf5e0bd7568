@@ -1,0 +1,1 @@
+{"ast":null,"code":"const test = () => {\n  return {};\n};","map":{"version":3,"sources":["/Users/bijaybohora/Documents/100 days/roomChat/pages/ass.js"],"names":["test"],"mappings":"AAAA,MAAMA,IAAI,GAAG,MAAM;AACf,SAAO,EAAP;AAIH,CALD","sourcesContent":["const test = () => {\n    return {\n        \n    }\n\n}\n"]},"metadata":{},"sourceType":"script"}

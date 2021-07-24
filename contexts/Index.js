@@ -1,9 +1,7 @@
 import React, { createContext, useState } from 'react'
 
-
 export const MainContext = createContext()
 export const UsersContext = createContext()
-
 
 export const MainProvider = (props) => {
     const [username, setUsername] = useState("")

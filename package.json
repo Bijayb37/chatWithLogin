@@ -8,6 +8,9 @@
     "build": "next build",
     "start": "NODE_ENV=production node server/index.js -p $PORT"
   },
+  "engines": {
+    "node": "14.15.4"
+  },
   "cacheDirectories": [".next/cache"],
   "dependencies": {
     "@types/react": "^17.0.0",

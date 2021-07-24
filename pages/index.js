@@ -1,6 +1,5 @@
 import { memo, useContext, useEffect, useState } from 'react'
-// import { MainContext } from '../contexts' 
-import { MainContext } from '../new/context'
+import { MainContext } from './contexts' 
 import { SocketContext } from '../contexts/SocketContext'
 import styles from '../styles/Home.module.css'
 import Toast from '../Components/Toast'

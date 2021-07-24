@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { MainProvider } from '../contexts'
+import { MainProvider } from '../new/context'
 import { SocketProvider } from '../contexts/SocketContext'
 
 function MyApp({ Component, pageProps }) {

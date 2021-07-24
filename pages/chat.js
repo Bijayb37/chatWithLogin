@@ -78,7 +78,7 @@ function Chat(props) {
         router.push('/')
         router.reload()
     }
-    console.log(messages)
+
     return (
         <div className={styles.chatContainer}>
             <Head>

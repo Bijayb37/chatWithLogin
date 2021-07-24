@@ -2,7 +2,7 @@ import { memo, useContext, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Toast from '../Components/Toast'
 import { useRouter } from 'next/router'
-import { MainContext } from '../contexts/index' 
+import { MainContext } from 'contexts/index' 
 import { SocketContext } from '../contexts/SocketContext'
 
 function Login(props) {

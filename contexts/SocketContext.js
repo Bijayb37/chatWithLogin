@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react'
 export const SocketContext = createContext()
 
 export const SocketProvider = (props) => {
-    const [socket] = useState(io("localhost:3000"))
+    const [socket] = useState(io())
 
     return (
         <SocketContext.Provider value={{ socket }}>
